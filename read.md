@@ -12,7 +12,7 @@ Aplicação em Streamlit rodando no Databricks para controle de presença em reu
 * Redirecionamento automático para Google Meet
 * Prevenção de acessos fora da janela permitida
 
-## 🏗️ Arquitetura
+##  Arquitetura
 
 * **Frontend:** Streamlit (Databricks Apps)
 * **Backend:** Databricks SQL Warehouse
