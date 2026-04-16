@@ -12,6 +12,24 @@ Aplicação em Streamlit rodando no Databricks para controle de presença em reu
 * Redirecionamento automático para Google Meet
 * Prevenção de acessos fora da janela permitida
 
+## Analytics de Presença
+
+O projeto inclui camadas analíticas prontas para monitoramento:
+
+* **vw_presenca** → base consolidada de presença com atraso e validação
+* **vw_indicadores_reuniao** → métricas por reunião
+* **vw_indicadores_gerais** → visão consolidada
+* **vw_duplicidade** → controle de múltiplos check-ins
+
+### Métricas disponíveis:
+
+* Total de check-ins
+* Participantes únicos
+* Taxa de presença válida
+* Atraso médio (min)
+* Primeiro e último acesso
+* Duplicidade de CPF
+
 ## Arquitetura
 
 * **Frontend:** Streamlit (Databricks Apps)
@@ -28,15 +46,16 @@ Aplicação em Streamlit rodando no Databricks para controle de presença em reu
 ├── sql/
 │   ├── 01_create_tables.sql
 │   ├── 02_seed_data.sql
-│   ├── 03_views.sql
+│   ├── 03_views.sql     # Camada analítica
+├── runbook.md           # Guia operacional
 ```
 
 ## Como executar
 
-1. Criar as tabelas:
+1. Criar as tabelas e views:
 
 ```sql
--- rodar arquivos em /sql
+-- executar arquivos em /sql
 ```
 
 2. Deploy no Databricks Apps
@@ -54,11 +73,18 @@ https://<app-url>/?token=<hash_link>
 * Desativação manual (`ativo = false`)
 * Validação dupla de horário (frontend + ação)
 
+## Casos de uso
+
+* Monitoramento de presença em reuniões clínicas
+* Controle de participação em grupos terapêuticos
+* Gestão de presença em reuniões corporativas
+* Acompanhamento de engajamento em sessões online
+
 ## Próximos passos
 
-* Dashboard de presença
-* Controle de duplicidade por CPF
-* Envio automático de links
+* Dashboard de presença (Databricks SQL / Power BI)
+* Bloqueio de duplicidade em tempo real
+* Geração automática de tokens
 
 
 ## Autora
